@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuth, useUser } from "@clerk/clerk-react";
-import { jobsData } from "../assets/assets";
+// import { jobsData } from "../assets/assets";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AppContext = createContext();
