@@ -8,8 +8,9 @@ import { clerkWebhooks } from './controllers/webhooks.js';
 import CompanyRoutes from './routes/CompanyRoutes.js';
 import connectCloudinary from './config/cloudinary.js';
 import jobRoutes from './routes/jobRoutes.js';
-import userRoutes from './routes/userRoutes.js'
-import {clerkMiddleware} from '@clerk/express'
+import userRoutes from './routes/userRoutes.js';
+import {clerkMiddleware} from '@clerk/express';
+import process from 'process';
 
 // initialize express
 const app = express();
@@ -26,7 +27,7 @@ app.use(clerkMiddleware());
 // Routes
 app.get('/',(req,res)=>res.send("API working"))
 
-app.get("/debug-sentry", function mainHandler(req, res) {
+app.get("/debug-sentry", function mainHandler() {
   throw new Error("My first Sentry error!");
 });
 
@@ -36,10 +37,11 @@ app.use('/api/jobs', jobRoutes)
 app.use('/api/users',userRoutes)
 
 // port 
+
 const PORT = process.env.PORT || 5000
 
 Sentry.setupExpressErrorHandler(app);
 
-app.listen(PORT,()=>{
-    console.log(`server is running on ${PORT}`)
-})
+// app.listen(PORT,()=>{
+//     console.log(`server is running on ${PORT}`)
+// })

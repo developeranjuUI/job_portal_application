@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import { v2 as cloudinary } from "cloudinary";
 import generateToken from "../utils/generateToken.js";
 import JobApplication from "../models/JobApplication.js";
+import Job from "../models/Job.js";
 
 // register a new company
 export const registeredCompany = async (req, res) => {
